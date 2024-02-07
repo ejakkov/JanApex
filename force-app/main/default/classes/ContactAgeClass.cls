@@ -19,6 +19,9 @@ public with sharing class ContactAgeClass {
     public static Boolean isAgeValid(Contact con, Integer legalAge){
         Date today = Date.today();
         Date birthdate = con.Birthdate;
+        if (birthdate == null){
+            return false;
+        }
 
         if(today.year() - birthdate.year() > legalAge){
             return true;
@@ -29,6 +32,7 @@ public with sharing class ContactAgeClass {
                 return  true;
             }
         }
+
         return false;
     }
 
